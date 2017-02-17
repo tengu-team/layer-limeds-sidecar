@@ -1,0 +1,6 @@
+subordinate: true
+requires:
+  limeds:
+    interface: limeds
+    scope: container
+series: ['xenial']
