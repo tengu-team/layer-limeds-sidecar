@@ -31,8 +31,7 @@ class LimeDS:
 
     def get_deploy_url(self, installable_id, installable_version):
         deploy_url = "{limeds_url}/_limeds/installables"\
-                     "/{installable_id}/{installable_version}"\
-                     "/deploy".format(
+                     "/{installable_id}/{installable_version}".format(
                          limeds_url=self.base_url,
                          installable_id=installable_id,
                          installable_version=installable_version)
@@ -48,7 +47,7 @@ class LimeDS:
     def add_installable(self, installable_id, installable_version):
         deploy_url = self.get_deploy_url(installable_id, installable_version)
         print("configuring LimeDS, adding installable: {}".format(deploy_url))
-        response = requests.get(deploy_url, headers={"Accept": "application/json"})
+        response = requests.put(deploy_url, headers={"Accept": "application/json"})
         print("response is:{}".format(response.text))
         if not response.status_code == 200:
             raise LimeDSException("ERROR: Deploying installable failed: {} {}".format(
